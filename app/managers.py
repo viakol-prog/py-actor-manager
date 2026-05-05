@@ -25,7 +25,12 @@ class ActorManager:
         cursor = self.connection.execute(query)
         rows = cursor.fetchall()
         # Повертаємо список об'єктів Actor
-        return [Actor(id=row[0], first_name=row[1], last_name=row[2]) for row in rows]
+        return [
+            Actor(id=row[0],
+                  first_name=row[1],
+                  last_name=row[2])
+            for row in rows
+        ]
 
     def update(self, pk: int, new_first_name: str, new_last_name: str) -> None:
         query = (
